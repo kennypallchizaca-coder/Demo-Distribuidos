@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Documentación DevOps & Orquestación</title>
+  <meta name="description" content="Portal interactivo de documentación técnica para Docker, Kubernetes, CI/CD y Despliegues Zero-Downtime.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="brand">
+      <span class="brand-badge">DevOps Docs</span>
+      <h1 class="brand-title">Portal de Documentación & Guías de Orquestación</h1>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar concepto, error, comando o archivo (ej. EXPOSE, endpoints, needs)...">
+      <span class="search-shortcut">Ctrl + K</span>
+    </div>
+  </header>
+
+  <!-- Main Portal Layout -->
+  <div class="portal-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Inicio</h2>
+        <ul class="nav-list">
+<<<<<<< HEAD
+          <li><a href="#quickstart" class="nav-item active" data-section="quickstart">Guía Rápida</a></li>
+=======
+          <li><a href="#quickstart" class="nav-item active" data-section="quickstart">Guía Rápida & Matriz 10s</a></li>
+>>>>>>> d811b45 (Commit inicial)
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Arquitectura</h2>
+        <ul class="nav-list">
+          <li><a href="#docker-arch" class="nav-item" data-section="docker-arch">Docker & Contenedores</a></li>
+          <li><a href="#k8s-arch" class="nav-item" data-section="k8s-arch">Kubernetes & Orquestación</a></li>
+          <li><a href="#cicd-arch" class="nav-item" data-section="cicd-arch">GitHub Actions CI/CD</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Patrones Ready-to-Use</h2>
+        <ul class="nav-list">
+          <li><a href="#pattern-deployment" class="nav-item" data-section="pattern-deployment">deployment.yaml</a></li>
+          <li><a href="#pattern-service" class="nav-item" data-section="pattern-service">service.yaml</a></li>
+          <li><a href="#pattern-rolling" class="nav-item" data-section="pattern-rolling">rolling-update.yaml</a></li>
+<<<<<<< HEAD
+          <li><a href="#pattern-hpa" class="nav-item" data-section="pattern-hpa">hpa.yaml</a></li>
+          <li><a href="#pattern-dockerfile" class="nav-item" data-section="pattern-dockerfile">Dockerfile</a></li>
+=======
+          <li><a href="#pattern-bluegreen" class="nav-item" data-section="pattern-bluegreen">blue-green.yaml</a></li>
+          <li><a href="#pattern-canary" class="nav-item" data-section="pattern-canary">canary.yaml</a></li>
+          <li><a href="#pattern-hpa" class="nav-item" data-section="pattern-hpa">hpa.yaml</a></li>
+          <li><a href="#pattern-dockerfile" class="nav-item" data-section="pattern-dockerfile">Dockerfile (Node/Py/Java/Go)</a></li>
+>>>>>>> d811b45 (Commit inicial)
+          <li><a href="#pattern-ci" class="nav-item" data-section="pattern-ci">ci.yml</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="sidebar-title">Operaciones & Diagnóstico</h2>
+        <ul class="nav-list">
+          <li><a href="#commands" class="nav-item" data-section="commands">Cheatsheet de Comandos</a></li>
+          <li><a href="#diagnostics" class="nav-item" data-section="diagnostics">Diagnóstico de Fallas</a></li>
+          <li><a href="#troubleshooting" class="nav-item" data-section="troubleshooting">Matriz de Solución de Errores</a></li>
+          <li><a href="#lab-notes" class="nav-item" data-section="lab-notes">Notas de Laboratorio</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- SECTION: Quickstart -->
+      <section id="quickstart" class="doc-section active">
+        <div class="section-header">
+          <span class="category-tag">General</span>
+<<<<<<< HEAD
+          <h2 class="section-title">Guía Rápida de Verificación</h2>
+          <p class="section-desc">Puntos críticos de comprobación para Docker, Kubernetes, CI/CD y despliegues sin interrupción.</p>
+=======
+          <h2 class="section-title">Guía Rápida & Matriz de Diagnóstico en 10 Segundos</h2>
+          <p class="section-desc">Puntos críticos de comprobación para Docker, Kubernetes, CI/CD y variantes de examen.</p>
+>>>>>>> d811b45 (Commit inicial)
+        </div>
+
+        <div class="cards-grid">
+          <div class="card card-accent-blue">
+            <h3 class="card-title">Reto 1: Docker</h3>
+<<<<<<< HEAD
+            <p class="card-text">Verificar que `server.js` escuche en `PORT=8080`, binding en `0.0.0.0` y que `Dockerfile` contenga `EXPOSE 8080`.</p>
+            <div class="card-footer">
+              <span class="status-badge status-ok">Puerto: 8080</span>
+=======
+            <p class="card-text">Verificar puerto real de escucha en código (Node:8080, Py:5000, Java:8080), binding `0.0.0.0` y `EXPOSE` coincidente.</p>
+            <div class="card-footer">
+              <span class="status-badge status-ok">Puerto: 8080 / 5000</span>
+>>>>>>> d811b45 (Commit inicial)
+              <span class="status-badge status-ok">Host: 0.0.0.0</span>
+            </div>
+          </div>
+
+          <div class="card card-accent-purple">
+            <h3 class="card-title">Reto 2: Kubernetes</h3>
+            <p class="card-text">Verificar coincidencia de etiquetas entre `Service.spec.selector.app` y `template.metadata.labels.app` ('webapp').</p>
+            <div class="card-footer">
+              <span class="status-badge status-ok">Endpoints: Poblando</span>
+            </div>
+          </div>
+
+          <div class="card card-accent-emerald">
+            <h3 class="card-title">Reto 3: GitHub Actions</h3>
+            <p class="card-text">Verificar la directiva `needs: build-test` en el job `deploy` para cancelar despliegues en caso de prueba rota.</p>
+            <div class="card-footer">
+              <span class="status-badge status-ok">needs: build-test</span>
+            </div>
+          </div>
+
+          <div class="card card-accent-amber">
+            <h3 class="card-title">El Giro: Alta Disponibilidad</h3>
+<<<<<<< HEAD
+            <p class="card-text">Escalar réplicas a 6, configurar `RollingUpdate` con `maxUnavailable: 0` y sondas `readinessProbe` para cero caídas.</p>
+            <div class="card-footer">
+              <span class="status-badge status-warn">Réplicas: 6</span>
+              <span class="status-badge status-warn">maxUnavailable: 0</span>
+=======
+            <p class="card-text">Estrategias: RollingUpdate (`maxUnavailable: 0`), Blue-Green (switch de versión) o Canary (división de réplicas).</p>
+            <div class="card-footer">
+              <span class="status-badge status-warn">Réplicas: 6</span>
+              <span class="status-badge status-warn">Zero-Downtime</span>
+>>>>>>> d811b45 (Commit inicial)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Docker Architecture -->
+      <section id="docker-arch" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Arquitectura</span>
+          <h2 class="section-title">Docker & Administración de Contenedores</h2>
+        </div>
+
+        <div class="doc-block">
+          <h3>Explicación Detallada del Dockerfile</h3>
+          <p>Cada directiva en el `Dockerfile` define una capa inmutable de la imagen. La optimización del orden permite aprovechar la memoria caché.</p>
+          
+          <div class="code-container">
+            <div class="code-header">
+<<<<<<< HEAD
+              <span>Dockerfile</span>
+=======
+              <span>Dockerfile (Node.js)</span>
+>>>>>>> d811b45 (Commit inicial)
+              <button class="copy-btn" data-copy="dockerfile-code">Copiar Código</button>
+            </div>
+            <pre><code id="dockerfile-code">FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "server.js"]</code></pre>
+          </div>
+<<<<<<< HEAD
+
+          <div class="breakdown-table-container">
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>Directiva</th>
+                  <th>Función Técnica</th>
+                  <th>Qué pasa si se elimina / cambia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>FROM node:20-alpine</code></td>
+                  <td>Imagen base minimalista de Linux con Node.js v20.</td>
+                  <td>Falla el build. Sin alpine la imagen pesará 1GB en lugar de 180MB.</td>
+                </tr>
+                <tr>
+                  <td><code>WORKDIR /app</code></td>
+                  <td>Directorio interno de ejecución.</td>
+                  <td>Los archivos se copian en la raíz (`/`) generando conflictos de sistema.</td>
+                </tr>
+                <tr>
+                  <td><code>EXPOSE 8080</code></td>
+                  <td>Documenta el puerto de escucha del contenedor.</td>
+                  <td>Si no coincide con `server.js`, la conexión será rechazada (`Connection refused`).</td>
+                </tr>
+                <tr>
+                  <td><code>CMD ["node", "server.js"]</code></td>
+                  <td>Comando por defecto al iniciar el contenedor.</td>
+                  <td>El contenedor finaliza inmediatamente al no tener proceso principal activo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Kubernetes Architecture -->
+      <section id="k8s-arch" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Arquitectura</span>
+          <h2 class="section-title">Kubernetes & Orquestación de Pods</h2>
+        </div>
+
+        <div class="doc-block">
+          <h3>Sincronización de Etiquetas y Selectores (Reto 2)</h3>
+          <p>Kubernetes asocia servicios con pods mediante etiquetas clave-valor. Si el selector del Servicio no coincide con las etiquetas del Pod, los Endpoints quedarán vacíos.</p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>k8s.yaml</span>
+              <button class="copy-btn" data-copy="k8s-code">Copiar Código</button>
+            </div>
+            <pre><code id="k8s-code">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 6
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+=======
+        </div>
+      </section>
+
+      <!-- SECTION: Patterns Blue-Green -->
+      <section id="pattern-bluegreen" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">blue-green.yaml (Estrategia Conmutación)</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>blue-green.yaml</span>
+            <button class="copy-btn" data-copy="pat-bg">Copiar</button>
+          </div>
+          <pre><code id="pat-bg">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: webapp
+        version: blue
+    spec:
+      containers:
+      - name: web
+        image: practice:v1
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+      version: green
+  template:
+    metadata:
+      labels:
+        app: webapp
+        version: green
+    spec:
+      containers:
+      - name: web
+        image: practice:v2
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: ClusterIP
+  selector:
+    app: webapp
+    version: green
+  ports:
+  - port: 80
+    targetPort: 8080</code></pre>
+        </div>
+      </section>
+
+      <!-- SECTION: Patterns Canary -->
+      <section id="pattern-canary" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">canary.yaml (Estrategia Progresiva)</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>canary.yaml</span>
+            <button class="copy-btn" data-copy="pat-can">Copiar</button>
+          </div>
+          <pre><code id="pat-can">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment-stable
+spec:
+  replicas: 9
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: web
+        image: practice:v1
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment-canary
+spec:
+  replicas: 1
+>>>>>>> d811b45 (Commit inicial)
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: web
+        image: practice:v2
+        ports:
+        - containerPort: 8080
+<<<<<<< HEAD
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 2
+          periodSeconds: 5
+=======
+>>>>>>> d811b45 (Commit inicial)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: ClusterIP
+  selector:
+    app: webapp
+  ports:
+  - port: 80
+    targetPort: 8080</code></pre>
+<<<<<<< HEAD
+          </div>
+=======
+        </div>
+      </section>
+
+      <!-- SECTION: Kubernetes Architecture -->
+      <section id="k8s-arch" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Arquitectura</span>
+          <h2 class="section-title">Kubernetes & Orquestación de Pods</h2>
+        </div>
+        <div class="doc-block">
+          <h3>Sincronización de Etiquetas y Selectores (Reto 2)</h3>
+          <p>Kubernetes asocia servicios con pods mediante etiquetas clave-valor. Si el selector del Servicio no coincide con las etiquetas del Pod, los Endpoints quedarán vacíos.</p>
+>>>>>>> d811b45 (Commit inicial)
+        </div>
+      </section>
+
+      <!-- SECTION: CI/CD Architecture -->
+      <section id="cicd-arch" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Arquitectura</span>
+          <h2 class="section-title">GitHub Actions & Automatización CI/CD</h2>
+        </div>
+<<<<<<< HEAD
+
+        <div class="doc-block">
+          <h3>Dependencia de Trabajos con `needs` (Reto 3)</h3>
+          <p>Por defecto, los jobs corren en paralelo. Para bloquear el despliegue cuando una prueba falla, se requiere `needs`.</p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>ci.yml</span>
+              <button class="copy-btn" data-copy="ci-code">Copiar Código</button>
+            </div>
+            <pre><code id="ci-code">name: ci-cd
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm test
+
+  deploy:
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker build -t app:${{ github.sha }} .</code></pre>
+          </div>
+=======
+        <div class="doc-block">
+          <h3>Dependencia de Trabajos con `needs` (Reto 3)</h3>
+          <p>Por defecto, los jobs corren en paralelo. Para bloquear el despliegue cuando una prueba falla, se requiere `needs`.</p>
+>>>>>>> d811b45 (Commit inicial)
+        </div>
+      </section>
+
+      <!-- SECTION: Commands Cheatsheet -->
+      <section id="commands" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Operaciones</span>
+          <h2 class="section-title">Cheatsheet de Comandos (PowerShell & Bash)</h2>
+        </div>
+<<<<<<< HEAD
+
+        <div class="doc-block">
+          <div class="code-container">
+            <div class="code-header">
+              <span>Comandos Frecuentes CLI</span>
+              <button class="copy-btn" data-copy="cmd-code">Copiar Código</button>
+            </div>
+            <pre><code id="cmd-code"># --- DOCKER ---
+=======
+        <div class="code-container">
+          <div class="code-header">
+            <span>Comandos Frecuentes CLI</span>
+            <button class="copy-btn" data-copy="cmd-code">Copiar Código</button>
+          </div>
+          <pre><code id="cmd-code"># --- DOCKER ---
+>>>>>>> d811b45 (Commit inicial)
+docker build -t practice:v1 .
+docker run -d -p 8080:8080 --name app_container practice:v1
+docker logs -f app_container
+docker exec -it app_container sh
+
+# --- KUBERNETES ---
+kubectl apply -f k8s.yaml
+kubectl get pods
+kubectl get svc
+kubectl get endpoints web-service
+kubectl describe svc web-service
+kubectl describe pod <pod_name>
+kubectl scale deployment/web-deployment --replicas=6
+
+# --- POWERSHELL VS BASH ---
+# PowerShell (Windows):
+git add . ; git commit -m "feat: cambios" ; curl.exe -i http://localhost:8080
+
+# Bash (Linux/Mac):
+git add . && git commit -m "feat: cambios" && curl -i http://localhost:8080</code></pre>
+<<<<<<< HEAD
+          </div>
+=======
+>>>>>>> d811b45 (Commit inicial)
+        </div>
+      </section>
+
+      <!-- SECTION: Troubleshooting Matrix -->
+      <section id="troubleshooting" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Operaciones</span>
+          <h2 class="section-title">Matriz de Solución de Errores</h2>
+        </div>
+<<<<<<< HEAD
+
+        <div class="trouble-list">
+          <div class="trouble-item">
+            <div class="trouble-title">ERR_CONNECTION_REFUSED en Puerto 3000</div>
+            <div class="trouble-desc"><strong>Causa:</strong> EXPOSE en Dockerfile no coincide con el puerto de server.js (8080).</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Cambiar `EXPOSE 3000` por `EXPOSE 8080` en el Dockerfile.</div>
+=======
+        <div class="trouble-list">
+          <div class="trouble-item">
+            <div class="trouble-title">ERR_CONNECTION_REFUSED en Puerto 3000 / 5000</div>
+            <div class="trouble-desc"><strong>Causa:</strong> EXPOSE en Dockerfile no coincide con el puerto real de la app.</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Cambiar `EXPOSE` al puerto real donde escucha la aplicación (Node:8080, Py:5000).</div>
+>>>>>>> d811b45 (Commit inicial)
+          </div>
+
+          <div class="trouble-item">
+            <div class="trouble-title">Endpoints en Kubernetes Muestra &lt;none&gt;</div>
+            <div class="trouble-desc"><strong>Causa:</strong> Service.spec.selector ('app: webapp') no coincide con la etiqueta del Pod ('app: web').</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Igualar la etiqueta de la plantilla del Pod a `app: webapp` en k8s.yaml.</div>
+          </div>
+
+          <div class="trouble-item">
+<<<<<<< HEAD
+            <div class="trouble-title">El Pipeline Despliega a Pesar de Pruebas Fallidas</div>
+            <div class="trouble-desc"><strong>Causa:</strong> El job deploy no declara la directiva `needs: build-test`.</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Agregar `needs: build-test` bajo el job deploy en .github/workflows/ci.yml.</div>
+          </div>
+
+          <div class="trouble-item">
+            <div class="trouble-title">Cortes de Servicio Durante Actualización (502 Bad Gateway)</div>
+            <div class="trouble-desc"><strong>Causa:</strong> Falta de `maxUnavailable: 0` en RollingUpdate o ausencia de `readinessProbe`.</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Configurar `maxUnavailable: 0` e incluir `readinessProbe` probando la ruta / en el puerto 8080.</div>
+=======
+            <div class="trouble-title">Pod en ImagePullBackOff / ErrImagePull</div>
+            <div class="trouble-desc"><strong>Causa:</strong> Nombre o tag de la imagen mal escrito en spec.containers[].image.</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Corregir el nombre y etiqueta de la imagen Docker en el manifiesto YAML.</div>
+          </div>
+
+          <div class="trouble-item">
+            <div class="trouble-title">Pod en CrashLoopBackOff</div>
+            <div class="trouble-desc"><strong>Causa:</strong> Falla en tiempo de ejecución al arrancar el contenedor o ruta/puerto de la probe erróneo.</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Verificar logs con `kubectl logs <pod>` y ajustar la ruta/puerto de readinessProbe.</div>
+          </div>
+
+          <div class="trouble-item">
+            <div class="trouble-title">El Pipeline Despliega a Pesar de Pruebas Fallidas</div>
+            <div class="trouble-desc"><strong>Causa:</strong> El job deploy no declara la directiva `needs: build-test`.</div>
+            <div class="trouble-solution"><strong>Solución:</strong> Agregar `needs: build-test` bajo el job deploy en .github/workflows/ci.yml.</div>
+>>>>>>> d811b45 (Commit inicial)
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Patterns (Dynamic view container) -->
+      <section id="pattern-deployment" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">deployment.yaml</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>deployment.yaml</span>
+            <button class="copy-btn" data-copy="pat-dep">Copiar</button>
+          </div>
+          <pre><code id="pat-dep">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: web
+        image: practice:v1
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 2
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10</code></pre>
+        </div>
+      </section>
+
+      <section id="pattern-service" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">service.yaml</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>service.yaml</span>
+            <button class="copy-btn" data-copy="pat-svc">Copiar</button>
+          </div>
+          <pre><code id="pat-svc">apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: ClusterIP
+  selector:
+    app: webapp
+  ports:
+  - port: 80
+    targetPort: 8080</code></pre>
+        </div>
+      </section>
+
+      <section id="pattern-rolling" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">rolling-update.yaml (El Giro)</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>rolling-update.yaml</span>
+            <button class="copy-btn" data-copy="pat-roll">Copiar</button>
+          </div>
+          <pre><code id="pat-roll">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 6
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: web
+        image: practice:v2
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 2
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10</code></pre>
+        </div>
+      </section>
+
+      <section id="pattern-hpa" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">hpa.yaml</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>hpa.yaml</span>
+            <button class="copy-btn" data-copy="pat-hpa">Copiar</button>
+          </div>
+          <pre><code id="pat-hpa">apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-deployment
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50</code></pre>
+        </div>
+      </section>
+
+      <section id="pattern-dockerfile" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">Dockerfile</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Dockerfile</span>
+            <button class="copy-btn" data-copy="pat-df">Copiar</button>
+          </div>
+          <pre><code id="pat-df">FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "server.js"]</code></pre>
+        </div>
+      </section>
+
+      <section id="pattern-ci" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Patrones</span>
+          <h2 class="section-title">ci.yml</h2>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <span>ci.yml</span>
+            <button class="copy-btn" data-copy="pat-ci">Copiar</button>
+          </div>
+          <pre><code id="pat-ci">name: ci-cd
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm test
+
+  deploy:
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t app:${{ github.sha }} .</code></pre>
+        </div>
+      </section>
+
+      <section id="diagnostics" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Operaciones</span>
+          <h2 class="section-title">Metodología de Diagnóstico Paso a Paso</h2>
+        </div>
+        <div class="doc-block">
+          <p>Para resolver cualquier problema en evaluaciones o desarrollo, sigue esta metodología secuencial:</p>
+          <ol class="step-list">
+            <li><strong>Paso 1: Diagnóstico de Red en Contenedores:</strong> Verificar que `server.js` escuche en `0.0.0.0:8080` y que `Dockerfile` tenga `EXPOSE 8080`. Probando con `curl http://localhost:8080`.</li>
+            <li><strong>Paso 2: Diagnóstico de Endpoints en Kubernetes:</strong> Ejecutar `kubectl get endpoints web-service`. Si devuelve `<none>`, ajustar la etiqueta en `template.metadata.labels` a `app: webapp`.</li>
+            <li><strong>Paso 3: Diagnóstico de CI/CD Pipeline:</strong> Verificar que el trabajo `deploy` tenga `needs: build-test`. Al salir `npm test` con error (`exit 1`), el despliegue se cancela.</li>
+            <li><strong>Paso 4: Diagnóstico de Alta Disponibilidad (El Giro):</strong> Verificar réplicas a 6, `maxUnavailable: 0` y sondas `readinessProbe` para garantizar cero caídas durante actualizaciones.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="lab-notes" class="doc-section">
+        <div class="section-header">
+          <span class="category-tag">Prácticas</span>
+          <h2 class="section-title">Notas de Laboratorio & Casos Resueltos</h2>
+        </div>
+        <div class="doc-block">
+          <p>Casos prácticos resueltos en el repositorio con resumen de soluciones aplicadas en Git:</p>
+          <div class="code-container">
+            <div class="code-header">
+              <span>Historial de Commits Git</span>
+              <button class="copy-btn" data-copy="git-code">Copiar</button>
+            </div>
+            <pre><code id="git-code">feat(k8s): scale deployment to 6 replicas, add HPA and zero-downtime rolling update strategy (El Giro)
+test: add integration test suite and update package.json for green pipeline execution
+fix(ci): add needs dependency to block deploy job when tests fail (Reto 3)
+fix(k8s): sync deployment pod labels with service selector (Reto 2)
+fix(docker): resolve port mismatch in Dockerfile (Reto 1)
+initial: reproduce defective baseline for Reto 1, 2, 3</code></pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
