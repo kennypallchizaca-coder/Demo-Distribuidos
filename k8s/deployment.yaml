@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: cicd-practica-sd
   labels:
-    app: web
+    app: cicd-practica-sd
 spec:
-  replicas: 4
+  replicas: 12
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -13,11 +13,11 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-      app: web
+      app: cicd-practica-sd
   template:
     metadata:
       labels:
-        app: web
+        app: cicd-practica-sd
     spec:
       containers:
         - name: app

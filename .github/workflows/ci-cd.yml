@@ -10,6 +10,7 @@ env:
 
 jobs:
   build-test:
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,6 +27,7 @@ jobs:
 
   build-push:
     
+    needs: build-test
     runs-on: ubuntu-latest
     permissions:
       contents: read
