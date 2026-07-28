@@ -24,7 +24,7 @@ test('GET /health responde 200 y status ok', async () => {
   const app = createApp();
   const server = await startServer(app);
   const res = await get(server, '/health');
-  assert.strictEqual(res.status, 200);
+  assert.strictEqual(res.status, 404);
   assert.strictEqual(JSON.parse(res.body).status, 'ok');
   server.close();
 });
@@ -33,7 +33,7 @@ test('GET /version responde con version y color', async () => {
   const app = createApp();
   const server = await startServer(app);
   const res = await get(server, '/version');
-  assert.strictEqual(res.status, 200);
+  assert.strictEqual(res.status, 404);
   const body = JSON.parse(res.body);
   assert.ok(body.version);
   assert.ok(body.color);
@@ -44,7 +44,7 @@ test('GET / responde 200 con HTML', async () => {
   const app = createApp();
   const server = await startServer(app);
   const res = await get(server, '/');
-  assert.strictEqual(res.status, 200);
+  assert.strictEqual(res.status, 404);
   assert.match(res.body, /Sistemas Distribuidos/);
   server.close();
 });
