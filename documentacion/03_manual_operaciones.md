@@ -1,72 +1,150 @@
-# Cheat Sheet: Comandos Esenciales (CI/CD y DevOps)
+# Cheat Sheet: Comandos Operativos y Ejemplos Prácticos
 
-Esta lista contiene exclusivamente comandos útiles, libres de adornos, listos para copiar, pegar o adaptar durante tu evaluación práctica.
+Este manual contiene los comandos esenciales que necesitarás ejecutar durante el examen para construir, verificar y administrar tus despliegues. Todos incluyen ejemplos prácticos.
 
-## Git y GitHub CLI
-**Sobrescribir el historial remoto por completo (Push forzado)**
-Útil cuando debes deshacer un error crítico en el pipeline que ensució la historia.
+---
+
+## 1. Docker: Construcción y Pruebas Locales
+
+Antes de mandar nada a Kubernetes, es crucial saber manipular la imagen localmente.
+
+### Construir la imagen de Docker
+Útil para verificar que el `Dockerfile` no tiene errores de sintaxis antes de subirlo.
+**Comando base:**
 ```bash
-git push -f origin main
+docker build -t <nombre-imagen>:<tag> .
+```
+**Ejemplo Práctico (Pasando variables ARG):**
+```bash
+docker build -t mi-app:v1 --build-arg APP_VERSION=v2 --build-arg APP_COLOR=red .
+```
+*(Nota: El `.` al final indica que el Dockerfile está en el directorio actual).*
+
+### Ejecutar el contenedor localmente (Prueba)
+Sirve para verificar que la app expone el puerto correcto y arranca sin colapsar.
+**Comando base:**
+```bash
+docker run -d --name <nombre-instancia> -p <puerto-host>:<puerto-contenedor> <nombre-imagen>:<tag>
+```
+**Ejemplo Práctico:**
+```bash
+docker run -d --name prueba-local -p 8080:3000 mi-app:v1
+```
+*(Luego puedes probar en tu navegador entrando a `http://localhost:8080`).*
+
+### Ver logs de un contenedor fallido
+Si el contenedor arranca pero la app interna colapsa.
+**Ejemplo Práctico:**
+```bash
+docker logs prueba-local
 ```
 
-**Ver el historial resumido con códigos hash (Ideal para tags de Docker)**
+### Entrar al contenedor (Troubleshooting)
+Ideal para confirmar qué archivos se copiaron o en qué puerto está escuchando internamente.
+**Ejemplo Práctico:**
 ```bash
-git log --oneline -n 5
+docker exec -it prueba-local sh
 ```
 
-## Docker Local
-**Construir imagen usando variables y forzar que no use caché**
-```bash
-docker build --no-cache -t mi-app:v1 --build-arg APP_VERSION=v2 .
-```
+---
 
-**Verificar por qué falló un contenedor recién creado**
-```bash
-docker logs <id_contenedor>
-```
+## 2. Kubernetes: Inspección y Diagnóstico
 
-**Entrar al shell de un contenedor en ejecución (para revisar puertos o archivos)**
-```bash
-docker exec -it <id_contenedor> sh
-```
-
-## Kubernetes (kubectl)
-**Ver el estado global (qué está fallando a simple vista)**
+### Ver el estado global
+Muestra todos los Pods, Services y Deployments de un solo vistazo.
+**Ejemplo Práctico:**
 ```bash
 kubectl get all
 ```
 
-**Diagnóstico profundo de un Pod (Muestra los Probes, Límites y Eventos)**
+### Ver si el Service conectó con los Pods (Súper Importante)
+Si la app no responde en la web, siempre revisa esto. Si sale vacío, los "labels" del Pod no coinciden con el "selector" del Service.
+**Comando base:**
+```bash
+kubectl get endpoints <nombre-del-servicio>
+```
+**Ejemplo Práctico:**
+```bash
+kubectl get endpoints cicd-practica-sd
+```
+*Salida esperada:* `10.244.0.5:3000, 10.244.0.6:3000`
+
+### Investigar un Pod con problemas (Ej: CrashLoopBackOff)
+Muestra los eventos recientes del Pod, por qué fallaron los Probes o si falta memoria.
+**Comando base:**
 ```bash
 kubectl describe pod <nombre-del-pod>
 ```
-
-**Leer los logs en vivo de un Pod que está fallando**
+**Ejemplo Práctico:**
 ```bash
-kubectl logs -f <nombre-del-pod>
+kubectl describe pod cicd-practica-sd-7f8d9b4c-kx2ab
 ```
 
-**Comprobar que el balanceador de carga encontró a los pods**
+### Leer logs en vivo de un Pod de Kubernetes
+**Ejemplo Práctico:**
 ```bash
-kubectl get endpoints <nombre-del-service>
+kubectl logs -f cicd-practica-sd-7f8d9b4c-kx2ab
 ```
 
-**Actualizar la imagen de un Deployment al vuelo (El disparador del CD)**
+---
+
+## 3. Kubernetes: Operaciones de Despliegue (CD)
+
+### Forzar la actualización de una imagen (Continuous Delivery)
+Si no tienes GitHub Actions o quieres desplegar a mano.
+**Comando base:**
 ```bash
 kubectl set image deployment/<nombre-deploy> <nombre-contenedor>=<nueva-imagen:tag>
 ```
-
-**Monitorear un despliegue (Rolling Update) en tiempo real**
+**Ejemplo Práctico:**
 ```bash
-kubectl rollout status deployment/<nombre-deploy>
+kubectl set image deployment/cicd-practica-sd app=ghcr.io/kennypallchizaca-coder/demo-distribuidos:v2
 ```
 
-**Deshacer un despliegue roto (Rollback inmediato)**
+### Monitorear el progreso de la actualización (Rolling Update)
+Te permite ver en vivo cómo se van apagando los pods viejos y encendiendo los nuevos.
+**Ejemplo Práctico:**
 ```bash
-kubectl rollout undo deployment/<nombre-deploy>
+kubectl rollout status deployment/cicd-practica-sd
 ```
 
-**Ver el historial de revisiones antes de hacer Rollback**
+### Emergencia: Deshacer el despliegue (Rollback)
+Si inyectaste un bug a producción, esto te devuelve a la versión sana anterior instantáneamente.
+**Ejemplo Práctico (Deshacer el último cambio):**
 ```bash
-kubectl rollout history deployment/<nombre-deploy>
+kubectl rollout undo deployment/cicd-practica-sd
+```
+
+**Ejemplo Práctico (Volver a una versión específica):**
+```bash
+kubectl rollout history deployment/cicd-practica-sd
+kubectl rollout undo deployment/cicd-practica-sd --to-revision=2
+```
+
+---
+
+## 4. Minikube (Entorno Local)
+
+Si estás usando Minikube para levantar Kubernetes en tu máquina, estos te salvarán:
+
+### Obtener la URL pública de tu aplicación
+**Ejemplo Práctico:**
+```bash
+minikube service cicd-practica-sd --url
+```
+
+### Forzar a Minikube a usar la imagen de tu Docker local
+A veces Minikube no encuentra tu imagen local. Debes cargarla explícitamente en el clúster.
+**Ejemplo Práctico:**
+```bash
+minikube image load mi-app:v1
+```
+
+---
+
+## 5. Git: Limpieza de Emergencia
+Si por alguna razón metiste basura en el historial y necesitas forzar el código actual hacia GitHub destruyendo la historia de la nube.
+**Ejemplo Práctico:**
+```bash
+git push -f origin main
 ```
