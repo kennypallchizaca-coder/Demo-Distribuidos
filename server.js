@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-const http = require('http');
-const PORT = process.env.PORT || 8080;
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('OK');
-});
-
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server listening on port ${PORT}`);
-});
-=======
 const express = require('express');
 const os = require('os');
 
@@ -40,7 +27,7 @@ function createApp() {
     res.status(200).send(
       '<html><body style="font-family: sans-serif; background:' + APP_COLOR +
       '; color:white; text-align:center; padding-top:80px;">' +
-      '<h1>Sistemas Distribuidos - Cristian Timbi</h1>' +
+      '<h1>Sistemas Distribuidos - CI/CD</h1>' +
       '<h2>Version desplegada: ' + APP_VERSION + '</h2>' +
       '<p>Pod: ' + os.hostname() + '</p>' +
       '</body></html>'
@@ -59,4 +46,3 @@ if (require.main === module) {
 }
 
 module.exports = { createApp };
->>>>>>> ece48ee9b8398b2fb27f664fd01bfa11cf1d482d

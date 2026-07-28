@@ -32,11 +32,8 @@
       <div class="sidebar-section">
         <h2 class="sidebar-title">Inicio</h2>
         <ul class="nav-list">
-<<<<<<< HEAD
           <li><a href="#quickstart" class="nav-item active" data-section="quickstart">Guía Rápida</a></li>
-=======
           <li><a href="#quickstart" class="nav-item active" data-section="quickstart">Guía Rápida & Matriz 10s</a></li>
->>>>>>> d811b45 (Commit inicial)
         </ul>
       </div>
 
@@ -55,15 +52,12 @@
           <li><a href="#pattern-deployment" class="nav-item" data-section="pattern-deployment">deployment.yaml</a></li>
           <li><a href="#pattern-service" class="nav-item" data-section="pattern-service">service.yaml</a></li>
           <li><a href="#pattern-rolling" class="nav-item" data-section="pattern-rolling">rolling-update.yaml</a></li>
-<<<<<<< HEAD
           <li><a href="#pattern-hpa" class="nav-item" data-section="pattern-hpa">hpa.yaml</a></li>
           <li><a href="#pattern-dockerfile" class="nav-item" data-section="pattern-dockerfile">Dockerfile</a></li>
-=======
           <li><a href="#pattern-bluegreen" class="nav-item" data-section="pattern-bluegreen">blue-green.yaml</a></li>
           <li><a href="#pattern-canary" class="nav-item" data-section="pattern-canary">canary.yaml</a></li>
           <li><a href="#pattern-hpa" class="nav-item" data-section="pattern-hpa">hpa.yaml</a></li>
           <li><a href="#pattern-dockerfile" class="nav-item" data-section="pattern-dockerfile">Dockerfile (Node/Py/Java/Go)</a></li>
->>>>>>> d811b45 (Commit inicial)
           <li><a href="#pattern-ci" class="nav-item" data-section="pattern-ci">ci.yml</a></li>
         </ul>
       </div>
@@ -86,27 +80,21 @@
       <section id="quickstart" class="doc-section active">
         <div class="section-header">
           <span class="category-tag">General</span>
-<<<<<<< HEAD
           <h2 class="section-title">Guía Rápida de Verificación</h2>
           <p class="section-desc">Puntos críticos de comprobación para Docker, Kubernetes, CI/CD y despliegues sin interrupción.</p>
-=======
           <h2 class="section-title">Guía Rápida & Matriz de Diagnóstico en 10 Segundos</h2>
           <p class="section-desc">Puntos críticos de comprobación para Docker, Kubernetes, CI/CD y variantes de examen.</p>
->>>>>>> d811b45 (Commit inicial)
         </div>
 
         <div class="cards-grid">
           <div class="card card-accent-blue">
             <h3 class="card-title">Reto 1: Docker</h3>
-<<<<<<< HEAD
             <p class="card-text">Verificar que `server.js` escuche en `PORT=8080`, binding en `0.0.0.0` y que `Dockerfile` contenga `EXPOSE 8080`.</p>
             <div class="card-footer">
               <span class="status-badge status-ok">Puerto: 8080</span>
-=======
             <p class="card-text">Verificar puerto real de escucha en código (Node:8080, Py:5000, Java:8080), binding `0.0.0.0` y `EXPOSE` coincidente.</p>
             <div class="card-footer">
               <span class="status-badge status-ok">Puerto: 8080 / 5000</span>
->>>>>>> d811b45 (Commit inicial)
               <span class="status-badge status-ok">Host: 0.0.0.0</span>
             </div>
           </div>
@@ -129,17 +117,14 @@
 
           <div class="card card-accent-amber">
             <h3 class="card-title">El Giro: Alta Disponibilidad</h3>
-<<<<<<< HEAD
             <p class="card-text">Escalar réplicas a 6, configurar `RollingUpdate` con `maxUnavailable: 0` y sondas `readinessProbe` para cero caídas.</p>
             <div class="card-footer">
               <span class="status-badge status-warn">Réplicas: 6</span>
               <span class="status-badge status-warn">maxUnavailable: 0</span>
-=======
             <p class="card-text">Estrategias: RollingUpdate (`maxUnavailable: 0`), Blue-Green (switch de versión) o Canary (división de réplicas).</p>
             <div class="card-footer">
               <span class="status-badge status-warn">Réplicas: 6</span>
               <span class="status-badge status-warn">Zero-Downtime</span>
->>>>>>> d811b45 (Commit inicial)
             </div>
           </div>
         </div>
@@ -158,11 +143,8 @@
           
           <div class="code-container">
             <div class="code-header">
-<<<<<<< HEAD
               <span>Dockerfile</span>
-=======
               <span>Dockerfile (Node.js)</span>
->>>>>>> d811b45 (Commit inicial)
               <button class="copy-btn" data-copy="dockerfile-code">Copiar Código</button>
             </div>
             <pre><code id="dockerfile-code">FROM node:20-alpine
@@ -173,7 +155,6 @@ COPY . .
 EXPOSE 8080
 CMD ["node", "server.js"]</code></pre>
           </div>
-<<<<<<< HEAD
 
           <div class="breakdown-table-container">
             <table class="breakdown-table">
@@ -238,7 +219,6 @@ spec:
     rollingUpdate:
       maxSurge: 2
       maxUnavailable: 0
-=======
         </div>
       </section>
 
@@ -349,7 +329,6 @@ metadata:
   name: web-deployment-canary
 spec:
   replicas: 1
->>>>>>> d811b45 (Commit inicial)
   selector:
     matchLabels:
       app: webapp
@@ -363,15 +342,12 @@ spec:
         image: practice:v2
         ports:
         - containerPort: 8080
-<<<<<<< HEAD
         readinessProbe:
           httpGet:
             path: /
             port: 8080
           initialDelaySeconds: 2
           periodSeconds: 5
-=======
->>>>>>> d811b45 (Commit inicial)
 ---
 apiVersion: v1
 kind: Service
@@ -384,9 +360,7 @@ spec:
   ports:
   - port: 80
     targetPort: 8080</code></pre>
-<<<<<<< HEAD
           </div>
-=======
         </div>
       </section>
 
@@ -399,7 +373,6 @@ spec:
         <div class="doc-block">
           <h3>Sincronización de Etiquetas y Selectores (Reto 2)</h3>
           <p>Kubernetes asocia servicios con pods mediante etiquetas clave-valor. Si el selector del Servicio no coincide con las etiquetas del Pod, los Endpoints quedarán vacíos.</p>
->>>>>>> d811b45 (Commit inicial)
         </div>
       </section>
 
@@ -409,7 +382,6 @@ spec:
           <span class="category-tag">Arquitectura</span>
           <h2 class="section-title">GitHub Actions & Automatización CI/CD</h2>
         </div>
-<<<<<<< HEAD
 
         <div class="doc-block">
           <h3>Dependencia de Trabajos con `needs` (Reto 3)</h3>
@@ -439,11 +411,9 @@ jobs:
     steps:
       - run: docker build -t app:${{ github.sha }} .</code></pre>
           </div>
-=======
         <div class="doc-block">
           <h3>Dependencia de Trabajos con `needs` (Reto 3)</h3>
           <p>Por defecto, los jobs corren en paralelo. Para bloquear el despliegue cuando una prueba falla, se requiere `needs`.</p>
->>>>>>> d811b45 (Commit inicial)
         </div>
       </section>
 
@@ -453,7 +423,6 @@ jobs:
           <span class="category-tag">Operaciones</span>
           <h2 class="section-title">Cheatsheet de Comandos (PowerShell & Bash)</h2>
         </div>
-<<<<<<< HEAD
 
         <div class="doc-block">
           <div class="code-container">
@@ -462,14 +431,12 @@ jobs:
               <button class="copy-btn" data-copy="cmd-code">Copiar Código</button>
             </div>
             <pre><code id="cmd-code"># --- DOCKER ---
-=======
         <div class="code-container">
           <div class="code-header">
             <span>Comandos Frecuentes CLI</span>
             <button class="copy-btn" data-copy="cmd-code">Copiar Código</button>
           </div>
           <pre><code id="cmd-code"># --- DOCKER ---
->>>>>>> d811b45 (Commit inicial)
 docker build -t practice:v1 .
 docker run -d -p 8080:8080 --name app_container practice:v1
 docker logs -f app_container
@@ -490,10 +457,7 @@ git add . ; git commit -m "feat: cambios" ; curl.exe -i http://localhost:8080
 
 # Bash (Linux/Mac):
 git add . && git commit -m "feat: cambios" && curl -i http://localhost:8080</code></pre>
-<<<<<<< HEAD
           </div>
-=======
->>>>>>> d811b45 (Commit inicial)
         </div>
       </section>
 
@@ -503,20 +467,17 @@ git add . && git commit -m "feat: cambios" && curl -i http://localhost:8080</cod
           <span class="category-tag">Operaciones</span>
           <h2 class="section-title">Matriz de Solución de Errores</h2>
         </div>
-<<<<<<< HEAD
 
         <div class="trouble-list">
           <div class="trouble-item">
             <div class="trouble-title">ERR_CONNECTION_REFUSED en Puerto 3000</div>
             <div class="trouble-desc"><strong>Causa:</strong> EXPOSE en Dockerfile no coincide con el puerto de server.js (8080).</div>
             <div class="trouble-solution"><strong>Solución:</strong> Cambiar `EXPOSE 3000` por `EXPOSE 8080` en el Dockerfile.</div>
-=======
         <div class="trouble-list">
           <div class="trouble-item">
             <div class="trouble-title">ERR_CONNECTION_REFUSED en Puerto 3000 / 5000</div>
             <div class="trouble-desc"><strong>Causa:</strong> EXPOSE en Dockerfile no coincide con el puerto real de la app.</div>
             <div class="trouble-solution"><strong>Solución:</strong> Cambiar `EXPOSE` al puerto real donde escucha la aplicación (Node:8080, Py:5000).</div>
->>>>>>> d811b45 (Commit inicial)
           </div>
 
           <div class="trouble-item">
@@ -526,7 +487,6 @@ git add . && git commit -m "feat: cambios" && curl -i http://localhost:8080</cod
           </div>
 
           <div class="trouble-item">
-<<<<<<< HEAD
             <div class="trouble-title">El Pipeline Despliega a Pesar de Pruebas Fallidas</div>
             <div class="trouble-desc"><strong>Causa:</strong> El job deploy no declara la directiva `needs: build-test`.</div>
             <div class="trouble-solution"><strong>Solución:</strong> Agregar `needs: build-test` bajo el job deploy en .github/workflows/ci.yml.</div>
@@ -536,7 +496,6 @@ git add . && git commit -m "feat: cambios" && curl -i http://localhost:8080</cod
             <div class="trouble-title">Cortes de Servicio Durante Actualización (502 Bad Gateway)</div>
             <div class="trouble-desc"><strong>Causa:</strong> Falta de `maxUnavailable: 0` en RollingUpdate o ausencia de `readinessProbe`.</div>
             <div class="trouble-solution"><strong>Solución:</strong> Configurar `maxUnavailable: 0` e incluir `readinessProbe` probando la ruta / en el puerto 8080.</div>
-=======
             <div class="trouble-title">Pod en ImagePullBackOff / ErrImagePull</div>
             <div class="trouble-desc"><strong>Causa:</strong> Nombre o tag de la imagen mal escrito en spec.containers[].image.</div>
             <div class="trouble-solution"><strong>Solución:</strong> Corregir el nombre y etiqueta de la imagen Docker en el manifiesto YAML.</div>
@@ -552,7 +511,6 @@ git add . && git commit -m "feat: cambios" && curl -i http://localhost:8080</cod
             <div class="trouble-title">El Pipeline Despliega a Pesar de Pruebas Fallidas</div>
             <div class="trouble-desc"><strong>Causa:</strong> El job deploy no declara la directiva `needs: build-test`.</div>
             <div class="trouble-solution"><strong>Solución:</strong> Agregar `needs: build-test` bajo el job deploy en .github/workflows/ci.yml.</div>
->>>>>>> d811b45 (Commit inicial)
           </div>
         </div>
       </section>

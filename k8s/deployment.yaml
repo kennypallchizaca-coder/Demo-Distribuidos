@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/kennypallchizaca-coder/demo-distribuidos:latest
+          image: ghcr.io/<su-usuario>/cicd-practica-sd:latest
           ports:
             - containerPort: 3000
           env:

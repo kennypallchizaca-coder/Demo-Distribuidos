@@ -1,21 +1,13 @@
 {
-<<<<<<< HEAD
-  "name": "practice",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "node server.js",
-    "test": "node test.js"
-=======
   "name": "cicd-practica-sd",
   "version": "1.0.0",
-  "description": "App de demostracion para la practica guiada de CI/CD - Sistemas Distribuidos",
+  "description": "App para práctica de Docker, Kubernetes y CI/CD",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "node --test"
   },
   "dependencies": {
-    "express": "^4.19.2"
->>>>>>> ece48ee9b8398b2fb27f664fd01bfa11cf1d482d
+    "express": "^4.19.0"
   }
 }

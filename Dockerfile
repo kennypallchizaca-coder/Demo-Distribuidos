@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 8080
-=======
 # --- Etapa 1: instalar dependencias y correr las pruebas (fail fast) ---
 FROM node:20-alpine AS build
 WORKDIR /app
@@ -17,8 +9,8 @@ RUN npm test
 # --- Etapa 2: imagen final, minima, solo lo necesario para ejecutar ---
 FROM node:20-alpine AS runtime
 WORKDIR /app
-ARG APP_VERSION=v3-roto
-ARG APP_COLOR=yellow
+ARG APP_VERSION=v1
+ARG APP_COLOR=blue
 ARG SIMULATE_FAILURE=false
 ENV NODE_ENV=production
 ENV APP_VERSION=$APP_VERSION
@@ -30,5 +22,4 @@ COPY --from=build /app/server.js ./server.js
 USER node
 EXPOSE 3000
 HEALTHCHECK --interval=10s --timeout=3s CMD node -e "require('http').get('http://localhost:3000/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"
->>>>>>> ece48ee9b8398b2fb27f664fd01bfa11cf1d482d
 CMD ["node", "server.js"]
